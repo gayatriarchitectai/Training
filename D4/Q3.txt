@@ -1,0 +1,44 @@
+Objective:
+
+Deliver a simple and dependable appointment-booking experience so patients can secure appointments quickly without unnecessary waiting.
+
+ 
+
+Key Results:
+
+KR1: Reduce average call hold time from 12 minutes to under 5 minutes.
+
+KR2: Increase the percentage of appointment bookings completed within 5 minutes from 65% to 90%.
+ 
+KR3: Improve patient satisfaction with the scheduling experience from 4.0 to 4.6 out of 5.
+ 
+
+WSJF Calculation:
+
+ 
+
+KR 						BV 		TC 		RR/OE 		JS 		WSJF
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Reduce hold time 				10 		9 		8 		5 		5.4
+
+Faster booking completion 			9 		8 		7 		4 		6.0
+
+Improve patient satisfaction 			8 		7 		6 		3 		7.0
+
+ 
+
+Formula:
+
+WSJF = (Business Value + Time Criticality + Risk Reduction/Opportunity Enablement) / Job Size
+
+ 
+
+Priority Order:
+
+1. Improve patient satisfaction (WSJF 7.0)
+
+2. Faster booking completion (WSJF 6.0)
+
+3. Reduce hold time (WSJF 5.4)
