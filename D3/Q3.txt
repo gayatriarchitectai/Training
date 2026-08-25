@@ -1,0 +1,28 @@
+Design Choice 1: Model Family
+
+Reasoning Model
+
+Explanation:
+
+Case files are lengthy and require multi-step synthesis.
+The model must cross-reference dates, names, prior rulings, and legal information across documents.
+This is a complex reasoning task, not simple text generation.
+A Reasoning Model is better suited for understanding relationships between facts and producing accurate summaries.
+
+
+Design Choice 2: Where It Runs
+
+Edge / On-Prem
+
+Explanation:
+
+The scenario states that the agency operates on an air-gapped network.
+No connection to any public cloud is permitted.
+Government and defense data is highly sensitive and must remain within the agency's controlled environment.
+Therefore, the solution must be deployed On-Prem/Edge.
+Final Answer
+Design Area	Selected Option	ReasonModel Family	Reasoning Model	Required for multi-step synthesis, cross-referencing dates, names, and prior rulings across long case files.
+Where It Runs	Edge / On-Prem	Air-gapped government network with no public cloud access allowed.
+One-Line Justification
+
+Use a Reasoning Model deployed On-Prem/Edge because sovereign legal case files require deep cross-document reasoning while operating in a secure air-gapped environment with no cloud connectivity.
