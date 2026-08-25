@@ -1,0 +1,26 @@
+Design Choice 1: Model Family
+
+Reasoning Model
+
+Why?
+
+The system must analyze multiple medications and identify potential drug-drug interactions.
+This requires logical reasoning across several inputs, not just text generation.
+Patient safety is critical, so the model should be able to explain why an interaction is risky and evaluate combinations accurately.
+A simple SLM may miss complex interaction patterns, while a Reasoning Model is designed for more accurate decision-making.
+Design Choice 2: Where It Runs
+
+Edge / On-Prem
+
+Why?
+
+The requirement explicitly states that it must run inside the hospital's own network due to data governance policies.
+Patient medical information is highly sensitive and subject to privacy regulations.
+Running on-premises avoids sending patient data to external cloud services.
+It also provides lower latency for real-time intake workflows and greater control over security and compliance.
+Final Answer
+Design Area	Selected Option	ExplanationModel Family	Reasoning Model	Needed to evaluate complex multi-drug interactions, perform clinical reasoning, and provide accurate safety-related recommendations.
+Where	Edge / On-Prem	Required by hospital data-governance policies, keeps patient data within the hospital network, improves privacy, compliance, and response time.
+One-Line Justification
+
+Use a Reasoning Model deployed Edge/On-Prem because drug-interaction detection requires accurate clinical reasoning while sensitive patient data must remain within the hospital's network.
