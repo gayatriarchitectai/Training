@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' https://static.balsamiq.com/prototype/v1/; style-src 'unsafe-inline' https://static.balsamiq.com/prototype/v1/; font-src https://static.balsamiq.com/prototype/v1/; img-src data: https:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';"/>
+    <title>Error Handling Interface</title>
+
+    <!-- Fonts -->
+    <link href="https://static.balsamiq.com/prototype/v1/css/noto-fonts.css" rel="stylesheet"/>
+    <link href="https://static.balsamiq.com/prototype/v1/css/material-symbols-outlined.css" rel="stylesheet"/>
+
+    <!-- Tailwind CSS -->
+    <script src="https://static.balsamiq.com/prototype/v1/js/tailwindcss-3.4.17.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb",
+                        "secondary": "#ef4444",
+                        "background": "#f9fafb",
+                        "surface": "#ffffff",
+                        "border": "#e5e7eb",
+                        "text-main": "#333333",
+                        "text-muted": "#6b7280",
+                    },
+                    borderRadius: {
+                        "theme": "0.5rem",
+                        "theme-sm": "calc(0.5rem * 0.5)",
+                        "theme-lg": "calc(0.5rem * 1.5)",
+                    },
+                    boxShadow: {
+                        "theme": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Alpine.js Plugins -->
+    <script defer src="https://static.balsamiq.com/prototype/v1/js/alpinejs-collapse-3.14.9.min.js"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://static.balsamiq.com/prototype/v1/js/alpinejs-3.14.9.min.js"></script>
+
+    <style>
+        /* Prevent flash of unstyled content */
+        [x-cloak] { display: none !important; }
+        .font-display { font-family: 'Noto Serif', serif; }
+        .font-body { font-family: 'Noto Sans', sans-serif; }
+    </style>
+
+</head>
+<body class="bg-background text-text-main font-body antialiased min-h-screen"
+      x-data="{ page: 'main', formData: {} }">
+
+<!-- Page: Error -->
+<div x-show="page === 'main'" class="min-h-screen bg-background flex flex-col" x-cloak>
+    <!-- Header -->
+    <header data-control-id="214" class="flex items-center px-4 py-3 bg-surface border-b border-border">
+        <button @click="page = 'home'" class="flex items-center gap-2 text-text-main hover:opacity-70 transition-opacity">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="font-bold text-lg">Error</span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col items-center justify-center px-6 text-center">
+        <!-- Error Icon -->
+        <div data-control-id="216" class="mb-6">
+            <span class="material-symbols-outlined text-red-500" style="font-size: 64px;">warning</span>
+        </div>
+
+        <!-- Error Title -->
+        <h1 data-control-id="217" class="text-xl font-bold text-text-main mb-3">
+            Something went wrong
+        </h1>
+
+        <!-- Error Description -->
+        <p data-control-id="218" class="text-text-muted text-base mb-8 max-w-[280px]">
+            We encountered an unexpected issue. Please try again or return to the home page.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="w-full flex flex-col gap-3 max-w-[300px]">
+            <button data-control-id="219" 
+                @click="window.location.reload()"
+                class="w-full bg-primary text-white py-3 rounded-theme shadow-theme font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                Retry
+            </button>
+            
+            <button data-control-id="220" 
+                @click="page = 'home'"
+                class="w-full bg-surface text-primary border border-primary py-3 rounded-theme font-bold text-lg hover:bg-blue-50 active:scale-[0.98] transition-all">
+                Go Back to Home
+            </button>
+        </div>
+    </main>
+</div>
+
+<!-- Placeholder for Home Page Navigation -->
+<div x-show="page === 'home'" class="min-h-screen bg-background p-6 flex flex-col items-center justify-center" x-cloak>
+    <h2 class="text-xl font-bold mb-4">Home Page</h2>
+    <button @click="page = 'main'" class="bg-primary text-white px-6 py-2 rounded-theme">
+        Back to Error Screen
+    </button>
+</div>
+
+</body>
+</html>
