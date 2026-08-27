@@ -1,0 +1,80 @@
+The Illustrated Transformer – My Understanding
+
+Author: Jay Alammar
+Topic: Transformer Architecture and Self-Attention
+
+After reading The Illustrated Transformer by Jay Alammar, I learned that the Transformer is a neural network architecture designed to handle sequential data, particularly text, without relying on recurrent neural networks (RNNs). Its core idea is the use of attention, which helps the model understand relationships between words within a sentence.
+
+The Transformer was introduced in the 2017 research paper "Attention Is All You Need" by Vaswani et al. Unlike RNNs, which process words one at a time, Transformers can process many words simultaneously. This parallel processing makes them faster and more scalable, especially when working with large volumes of data.
+
+Self-Attention
+
+One of the most significant concepts discussed in the blog is self-attention. This mechanism allows each word in a sentence to examine other words and determine which ones are most relevant for understanding its meaning.
+
+
+For example:
+
+"The animal didn't cross the street because it was tired."
+
+To correctly interpret the word "it", the model needs to identify the word it refers to. Self-attention helps establish that "it" is connected to "animal", enabling better contextual understanding.
+
+Self-attention is built around three components known as Query (Q), Key (K), and Value (V). In simple terms, these help the model determine what information a word is searching for, which words are important, and what information should be gathered from them.
+
+
+
+Multi-Head Attention
+
+Rather than using a single attention mechanism, the Transformer applies multiple attention heads, a technique called multi-head attention.
+
+Each attention head can learn different types of relationships within a sentence. For instance, one head may focus on grammatical structure, while another may capture connections between pronouns and the nouns they reference. Combining information from multiple heads enables a richer understanding of the sentence.
+
+
+
+Positional Encoding
+
+Since Transformers process words in parallel rather than sequentially, they need a method to understand the order of words. This is achieved through positional encoding.
+
+For example:
+
+"The dog chased the cat."
+
+and
+
+"The cat chased the dog."
+
+Although both sentences contain the same words, their meanings differ because the word positions are different. Positional encoding provides the model with information about the location of each word in the sequence.
+
+
+
+Encoder and Decoder
+
+The original Transformer architecture follows an encoder-decoder structure.
+
+The encoder processes and understands the input sequence.
+The decoder generates the output sequence based on that understanding.
+
+For example, in language translation:
+
+English: The cat is sleeping.
+ 
+French: Le chat dort.
+
+The encoder first interprets the English sentence, and the decoder uses that encoded information to generate the equivalent French translation.
+
+The decoder also employs masked attention, which prevents it from accessing future words while generating the output, ensuring predictions are made step by step.
+
+
+
+Why Transformers Are Important
+
+The key takeaway from the blog is that attention allows the model to establish direct connections between different parts of a sentence, rather than processing information strictly in sequence.
+
+This capability helps Transformers understand long-range relationships between words, even when they are far apart in a sentence. Their ability to process data in parallel also makes training more efficient and scalable.
+
+Because of these strengths, the Transformer architecture became the foundation for many modern NLP and Generative AI systems, including applications for text generation, translation, summarization, question answering, and code generation.
+
+
+
+Conclusion
+
+In simple terms, the Transformer works by enabling words to focus on other relevant words within a sequence. The fundamental concepts behind this architecture include self-attention, Query/Key/Value (Q/K/V), multi-head attention, positional encoding, and the encoder-decoder framework.
