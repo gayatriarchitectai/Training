@@ -1,0 +1,258 @@
+Case 3: Diagnose the Failure (Contract Copilot)
+User Query
+
+"Does this NDA let the vendor use our data to train their AI models?"
+
+
+
+Retrieved Context
+Section 4.2
+
+Recipient shall use Confidential Information solely to evaluate the proposed partnership, and for no other purpose, including training, fine-tuning, or improving any machine learning or AI model.
+
+Section 7.1
+
+This Agreement shall remain in effect for two (2) years from the Effective Date.
+
+
+
+Generated Answer
+
+Confidentiality clauses like this typically exist to protect sensitive business information shared during partnership discussions, and NDAs commonly include a defined term along with mutual obligations for both parties to safeguard each other's data appropriately.
+
+
+
+Expected Answer
+No. The NDA explicitly prohibits the recipient from using confidential information for training, fine-tuning, or improving any AI or machine learning model. The information may only be used for evaluating the proposed partnership.
+
+
+RAGAS Evaluation: 
+
+1. Context Precision = High 
+Why : The highest-ranked retrieved chunk directly addresses the user's question.
+
+
+
+User asks: Can the vendor use our data to train AI models?
+
+
+Retrieved Clause:
+"...including training, fine-tuning, or improving any machine learning or AI model."
+
+
+
+The retrieved context is highly relevant to the query and contains the exact information required.
+
+Conclusion:  Correct and relevant chunks were retrieved.
+
+
+
+2. Context Recall = High 
+Why? : All information needed to answer the question is available in the retrieved context.
+
+Nothing important is missing.
+
+The answer can be derived completely from Section 4.2 without requiring any additional clauses.
+
+Conclusion:  Retrieval retrieved sufficient information.
+
+
+3. Answer Relevancy = Low 
+Why? : The user asked a very specific yes/no question: Does this NDA allow AI training?
+
+
+A relevant answer should have been:
+
+No, AI training is prohibited.
+
+Instead, the generated response discusses:
+
+1. General purpose of NDAs
+2. Protection of business information
+3. Typical confidentiality obligations
+
+The answer never directly addresses the question.
+
+Conclusion:  Generated answer is not relevant to the user's intent.
+
+
+
+4. Faithfulness = Low 
+Why? : The retrieved evidence explicitly states: AI training is prohibited.
+
+However, the generated answer ignores this evidence entirely.
+
+A faithful answer should be grounded in the retrieved text and cite the prohibition clause.
+
+Instead, the answer provides generic legal commentary.
+
+Conclusion:  Answer is insufficiently grounded in the retrieved context.
+
+
+
+Advanced Failure Triangle
+
+Think of every RAG system as a triangle containing three components:
+
+
+                 QUERY
+                    ▲
+                    │
+                    │
+                    │
+                    │
+                    ▼
+          RETRIEVED CONTEXT
+                    │
+                    │
+                    │
+                    ▼
+                  ANSWER
+
+For a good RAG response, all three connections must be strong.
+
+
+Analysis of This Example
+
+
+                      QUERY
+                         ▲
+                         │
+                         │ Strong Match 
+                         │
+                         │
+                         ▼
+
+              RETRIEVED CONTEXT
+                         │
+                         │
+                         │ Weak Grounding 
+                         │
+                         ▼
+
+                     ANSWER
+
+
+Query → Context
+
+Strong
+
+The retrieval system successfully found the exact clause discussing AI training.
+
+Context → Answer
+
+Weak
+
+The LLM failed to use the retrieved evidence while generating the response.
+
+Query → Answer
+
+Weak
+
+The final answer does not explicitly answer the user's question.
+
+
+
+Better Diagnostic Triangle
+                           QUERY
+          "Can vendor use our data for AI training?"
+                                   ▲
+                                   │
+                                   │
+                                   │
+                                   │
+                         Exact Match Found 
+                                   │
+                                   │
+                                   ▼
+
+RETRIEVED CONTEXT -------------------------------- ANSWER
+
+Section 4.2:                                 Generic NDA explanation
+
+"Training, fine-tuning,                      No Yes/No answer
+or improving AI models                       No mention of AI training
+is prohibited"                               No reference to Section 4.2
+
+                                                         
+       Retrieval Success                           Generation Failure
+
+
+Root Cause Analysis
+
+The RAG pipeline consists of:
+
+User Query
+
+↓
+
+Retriever
+
+↓
+
+Relevant Context
+
+↓
+
+LLM Generator
+
+↓
+
+Final Answer
+
+
+Applying that here:
+
+
+User Query
+
+↓
+
+Retriever 
+
+↓
+
+Correct Clause Retrieved 
+
+↓
+
+LLM Generator 
+
+↓
+
+Generic Answer 
+
+
+
+
+The retriever successfully located the exact answer.
+
+The generator failed to:
+
+1. Read the key clause.
+2. Extract the prohibition.
+3. Generate a direct response.
+
+
+
+
+Final Diagnosis: 
+
+Retrieval Layer
+ Working Correctly
+
+Context Precision = High
+Context Recall = High
+
+
+Generation Layer
+ Working Incorrectly
+
+Answer Relevancy = Low
+Faithfulness = Low
+
+
+
+One-Line Conclusion
+
+This is a Generation Failure. The retriever successfully found the clause explicitly prohibiting AI model training, but the LLM failed to ground its response in that evidence and produced a generic answer instead.
