@@ -1,0 +1,146 @@
+Answer 1: 
+Ongoing Monitoring vs Effective Challenge (Real-Life Scenario)
+
+Scenario: Facebook Content Moderation System
+
+Ongoing Monitoring is the continuous observation of the AI system after deployment to ensure it is operating as expected. For example, Facebook continuously tracks metrics such as harmful content detection rate, false positives, user complaints, and response times. If the percentage of offensive posts slipping through moderation increases, an alert is generated and the issue is investigated.
+
+Effective Challenge is an independent review that questions whether the system should be operating the way it currently does. For example, an independent AI governance team reviews moderation decisions and asks whether the model is unfairly flagging certain communities, whether the moderation policy is appropriate, and whether the model's assumptions remain valid.
+
+In simple terms:
+
+Ongoing Monitoring = Perceiving problems (watching for issues in production).
+Effective Challenge = Reacting and questioning decisions (challenging the design, assumptions, and outcomes to prevent future issues).
+
+
+Answer 2: 
+Core GenAI Design Patterns with HITL, Override/Escalation, and Design Records
+
+1. Prompt Chaining
+
+Real-Life Scenario: Loan Approval Assistant
+
+A bank uses multiple prompts sequentially to process a loan application.
+
+Chain 1: Extract customer details from submitted documents.
+
+Chain 2: Analyze credit history and financial information.
+
+Chain 3: Generate a loan approval recommendation.
+
+HITL (Human-in-the-Loop)
+
+Before the final approval recommendation is issued, a loan officer reviews the AI-generated assessment and either approves or modifies the recommendation.
+
+Override and Escalation
+
+If the customer's risk score is near the approval threshold or supporting documents are incomplete, the workflow escalates the case to a senior underwriter for manual review.
+
+Design Record Entry
+
+"Prompt Chaining selected because loan processing requires sequential execution where the output of one step becomes the input to the next step. Human validation is required before final approval."
+
+2. Routing
+
+Real-Life Scenario: Customer Support Assistant
+
+Customer queries are first classified and then routed to the appropriate specialist system.
+
+Examples:
+
+-Billing questions → Billing Agent
+-Technical issues → Technical Support Agent
+-Account issues → Identity Management Agent
+-HITL (Human-in-the-Loop)
+
+If the system is not confident about the category, a human support representative validates the classification before routing.
+
+Override and Escalation
+
+Complex complaints involving legal, regulatory, or fraud concerns are escalated directly to specialized support teams.
+
+Design Record Entry
+
+"Routing pattern selected to direct requests to specialized agents, improving response accuracy and reducing unnecessary processing."
+
+3. Orchestrator-Worker
+
+Real-Life Scenario: Travel Planning Assistant
+
+A customer requests a complete vacation plan.
+
+The Orchestrator Agent:
+
+-Analyzes the request.
+-Breaks the task into subtasks.
+
+Worker Agents:
+
+-Flight Search Agent
+-Hotel Search Agent
+-Local Attractions Agent
+-Cost Estimation Agent
+
+The Orchestrator combines all worker responses into a single travel plan.
+
+HITL (Human-in-the-Loop)
+
+A travel consultant reviews the final itinerary before it is delivered to high-value customers.
+
+Override and Escalation
+
+If workers return conflicting recommendations or confidence scores are low, the orchestrator escalates the request to a human travel expert.
+
+Design Record Entry
+
+"Orchestrator-Worker pattern selected because the request consists of multiple independent subtasks requiring specialized processing."
+
+4. Evaluator-Optimizer
+
+Real-Life Scenario: Marketing Content Generation
+
+An AI system generates product advertisements.
+
+The Optimizer generates marketing content, while the Evaluator reviews the content for brand guidelines, accuracy, and compliance.
+
+The process continues until acceptable content quality is achieved.
+
+HITL (Replace Evaluator with HITL)
+
+Instead of an AI evaluator, a marketing manager reviews the generated content and provides improvement feedback before publication.
+
+Override and Escalation
+
+If generated content contains compliance risks or potentially misleading claims, the request is escalated to the legal review team.
+
+Design Record Entry
+
+"Evaluator-Optimizer selected because content must undergo iterative refinement until predefined quality standards are achieved."
+
+
+5. Parallelization
+
+Real-Life Scenario: Insurance Claim Processing
+
+An insurance company receives a claim submission.
+
+Multiple tasks execute simultaneously:
+
+Document Verification
+Fraud Assessment
+Policy Coverage Check
+Damage Estimation
+
+Results are combined to produce the final claim decision.
+
+HITL (Human-in-the-Loop)
+
+A claims officer reviews the combined results before approving high-value claims.
+
+Override and Escalation
+
+If fraud indicators exceed a predefined threshold or results from parallel processes are inconsistent, the claim is escalated to the investigation team.
+
+Design Record Entry
+
+"Parallelization selected to reduce end-to-end processing time by executing independent activities concurrently and aggregating results afterward."
