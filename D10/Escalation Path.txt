@@ -1,0 +1,54 @@
+Scenario: 
+A Gen AI weather assistant uses Google Weather API data. The assistant starts displaying incorrect weather forecasts due to API failures or inconsistent responses.
+
++--------------------------------------------------+
+| Step 1: Monitoring Alert Detects Issue           |
+| Role: Site Reliability Engineer (SRE)            |
+| Example: Weather API response error > 10%        |
++--------------------------------------------------+
+                      |
+                      v
++--------------------------------------------------+
+| Step 2: L1 Support Engineer Investigation        |
+| Validate logs, API status, error rates,          |
+| and recent deployment changes                    |
++--------------------------------------------------+
+                      |
+        +-------------+-------------+
+        |                           |
+   Issue Resolved?             No
+        |                           |
+       Yes                          v
+        |              +--------------------------------+
+        |              | Step 3: GenAI Product Owner    |
+        |              | Review business impact         |
+        |              | Assess affected users          |
+        |              +--------------------------------+
+        |                           |
+        |                           v
+        |              +--------------------------------+
+        |              | Step 4: Vendor Escalation      |
+        |              | Google Cloud/API Support Team  |
+        |              | Investigate API outage/data    |
+        |              | inconsistency                  |
+        |              +--------------------------------+
+        |                           |
+        |                           v
+        |              +--------------------------------+
+        |              | Step 5: AI Governance Lead     |
+        |              | Decide fallback actions,       |
+        |              | disable feature, issue user    |
+        |              | notifications, document RCA    |
+        |              +--------------------------------+
+        |
+        v
++--------------------------------------------------+
+| Service Restored & Incident Closed               |
+| Design records updated with lessons learned      |
++--------------------------------------------------+
+
+-SRE detects abnormal API behavior through monitoring.
+-L1 Support Engineer validates whether the issue is internal or external.
+-GenAI Product Owner assesses user and business impact.
+-Google API Support Team investigates vendor-side failures.
+-AI Governance Lead authorizes overrides, fallback models, user notifications and documents the incident in design records.
